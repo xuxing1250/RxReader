@@ -1,6 +1,7 @@
 package com.oos_team.xuxin.rxreader.utils;
 
 import android.graphics.Bitmap;
+import android.icu.util.Calendar;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -85,6 +86,20 @@ public class Options {
     public static int dip2px(float dpValue) {
         final float scale = MyApplication.getInstance().getResources().getDisplayMetrics().density;
         return (int) (dpValue * scale + 0.5f);
+    }
+
+    /**
+     * 获取当前日期的天数
+     * @return
+     */
+    public static String getSystemCurrentDate() {
+        Integer day = 0;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            Calendar calendar = Calendar.getInstance();
+            day = calendar.get(Calendar.DAY_OF_MONTH);
+        }
+
+        return day.toString();
     }
 
 }

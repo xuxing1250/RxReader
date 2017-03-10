@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.oos_team.xuxin.rxreader.R;
+import com.oos_team.xuxin.rxreader.utils.Options;
 import com.oos_team.xuxin.xrecycleview.XRecyclerView;
+
+import org.w3c.dom.Text;
 
 /**
  * Created by xuxin on 17-2-23.
@@ -70,6 +74,8 @@ public class GankoFragment extends Fragment {
         public void onBindViewHolder(XRecyclerView.ViewHolder holder, int position) {
             if (getItemViewType(position) == GANKIO_ITEM_TYPE_HEADER) {
                 GankioViewHeaderHolder viewItemHolder = (GankioViewHeaderHolder) holder;
+                ((GankioViewHeaderHolder) holder).mCurrentDay.
+                        setText(Options.getSystemCurrentDate());
             } else {
                 GankioViewItemHolder viewItemHolder = (GankioViewItemHolder) holder;
                 viewItemHolder.mItemView.getWidth();
@@ -94,12 +100,14 @@ public class GankoFragment extends Fragment {
     public class GankioViewHeaderHolder extends XRecyclerView.ViewHolder {
         private ImageButton mXiandu, mEveryDay, mHotMovie;
         private View mItemView;
+        private TextView mCurrentDay;
         public GankioViewHeaderHolder(View itemView) {
             super(itemView);
             mItemView = itemView;
-//            mXiandu = (ImageButton) mItemView.findViewById(R.id.ib_xiandu);
+            mXiandu = (ImageButton) mItemView.findViewById(R.id.ib_xiandu);
 //            mEveryDay = (ImageButton) mItemView.findViewById(R.id.fl_everyday);
-//            mHotMovie = (ImageButton) mItemView.findViewById(R.id.ib_movie_hot);
+            mHotMovie = (ImageButton) mItemView.findViewById(R.id.ib_movie_hot);
+            mCurrentDay = (TextView) mItemView.findViewById(R.id.tv_daily_text);
         }
     }
 
