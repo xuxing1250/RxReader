@@ -45,17 +45,15 @@ import rx.Observer;
 public class CommondFragment extends Fragment {
     private static final String TAG = "CommondFragment";
     private int mShowitemCount = 20;
-
     private XRecyclerView mRecycleView;
     private ListApdater mAdapter;
     private List<ImageBean.ResultsBean> mList = new ArrayList<>();
 
-
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+
         View view = inflater.inflate(R.layout.commond_fragment, container, false);
         mRecycleView = (XRecyclerView) view.findViewById(R.id.recycle_list);
         getFuliBean();

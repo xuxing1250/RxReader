@@ -59,6 +59,11 @@ public class ContentActivity extends MainActivity {
 
         mAdapter = new ContentFragmentAdapter(getSupportFragmentManager(), mList, this);
         mViewPager.setAdapter(mAdapter);
+        /**
+         * 解决viewpager 切换fragment时 出现的异常
+         * The specified child already has a parent. You must call removeView()
+         */
+        mViewPager.setOffscreenPageLimit(3);
 
         mTabLayout.setupWithViewPager(mViewPager);
         for (int i = 0; i < mTabLayout.getTabCount(); i++) {
